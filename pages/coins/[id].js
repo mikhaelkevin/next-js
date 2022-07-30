@@ -25,6 +25,7 @@ export const getStaticProps = async ({ params }) => {
     props: {
       coinDetail: data?.data?.coin,
     },
+    revalidate: 10,
   };
 };
 

@@ -2,7 +2,7 @@
 import axios from "axios";
 import Link from "next/link";
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const data = await axios.get(
     "https://api.coinstats.app/public/v1/coins?skip=0"
   );

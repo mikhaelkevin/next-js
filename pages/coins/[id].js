@@ -3,7 +3,20 @@ import axios from "axios";
 import style from "../../styles/CoinDetail.module.css";
 import Head from "next/head";
 
-export const getServerSideProps = async ({ params }) => {
+export const getStaticPaths = async () => {
+  const data = await axios.get("https://api.coinstats.app/public/v1/coins");
+
+  const coins = data?.data?.coins;
+
+  return {
+    paths: coins.map((coin) => ({
+      params: { id: coin?.id?.toString() },
+    })),
+    fallback: false,
+  };
+};
+
+export const getStaticProps = async ({ params }) => {
   const data = await axios.get(
     `https://api.coinstats.app/public/v1/coins/${params.id}`
   );

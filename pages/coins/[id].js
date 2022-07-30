@@ -3,9 +3,9 @@ import axios from "axios";
 import style from "../../styles/CoinDetail.module.css";
 import Head from "next/head";
 
-export const getServerSideProps = async ({ params }) => {
+export const getServerSideProps = async ({ params: { id } }) => {
   const data = await axios.get(
-    `https://api.coinstats.app/public/v1/coins/${params.id}`
+    `https://api.coinstats.app/public/v1/coins/${id}`
   );
 
   return {
